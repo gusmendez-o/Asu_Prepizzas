@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ña Asu - Prepizzas Artesanales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-bg {
+            background-color: #2d3748;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+        .btn-primary {
+            background-color: #e53e3e;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(229, 62, 62, 0.4);
+        }
+        .btn-primary:hover {
+            background-color: #c53030;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(229, 62, 62, 0.6);
+        }
+        .card {
+            background-color: #2d3748;
+            border-radius: 1.25rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+        }
+        .footer-container {
+            background-color: #1a202c;
+            color: white;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            text-align: center;
+            width: 100%;
+            margin-top: 2rem;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
+        }
+        .text-accent {
+            color: #48bb78;
+        }
+        #nosotros, #contacto {
+            background-color: #1a202c;
+        }
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: white;
+            padding: 0.9rem 2.2rem;
+            border-radius: 9999px;
+            background-color: #25D366;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+        }
+        .whatsapp-link:hover {
+            background-color: #1DA851;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
+        }
+        .hero-bg-image {
+            background-image: url('https://content.googleapis.com/v1/files/uploaded:image.png-c13a11eb-ccd1-47dc-b56f-5e2e6a9de584?alt=media');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+        }
+        .hero-bg-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 90%;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        .footer-text {
+            font-size: 0.7rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+            text-align: center;
+            width: 100%;
+            color: white;
+            font-weight: 400;
+        }
+        @media (min-width: 640px) {
+            .footer-text { font-size: 0.8rem; }
+        }
+        @media (min-width: 768px) {
+            .footer-text { font-size: 0.8rem; }
+        }
+        @media (min-width: 1024px) {
+            .footer-text { font-size: 0.8rem; }
+        }
+        h1 { font-size: 3rem; }
+        @media (min-width: 768px) { h1 { font-size: 4.5rem; } }
+        @media (min-width: 1024px) { h1 { font-size: 5.5rem; } }
+        h2 { font-size: 2.5rem; }
+        @media (min-width: 768px) { h2 { font-size: 3.5rem; } }
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        p { font-size: 1rem; }
+        @media (min-width: 768px) { p { font-size: 1.125rem; } }
+        .product-price {
+            display: block;
+            text-align: center;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        /* Ajuste para el precio de PIZZETAS: un poquito más abajo */
+        .product-price.pizzetas {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sección del Encabezado (Header) -->
+    <header class="header-bg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <div class="text-white text-4xl font-bold mb-4 sm:mb-0">
+                Ña Asu
+            </div>
+            <ul class="flex flex-wrap justify-center space-x-6 sm:space-x-10 text-white text-lg">
+                <li><a href="#inicio" class="hover:text-gray-300 transition duration-300">Inicio</a></li>
+                <li><a href="#nosotros" class="hover:text-gray-300 transition duration-300">Nosotros</a></li>
+                <li><a href="#productos" class="hover:text-gray-300 transition duration-300">Productos</a></li>
+                <li><a href="#contacto" class="hover:text-gray-300 transition duration-300">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Principal (Hero) con imagen de fondo -->
+    <section id="inicio" class="hero-bg-image flex-grow">
+        <div class="hero-content">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
+                Ña Asu: El Sabor Casero de la Prepizza
+            </h1>
+            <p class="text-xl md:text-2xl mb-8">
+                Prepizzas artesanales, hechas con amor y los mejores ingredientes para tu mesa.
+            </p>
+            <a href="#productos" class="btn-primary text-xl inline-block">
+                Ver Productos
+            </a>
+        </div>
+    </section>
+
+    <!-- Sección "Nosotros" -->
+    <section id="nosotros" class="py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-5xl font-extrabold mb-12 text-accent">Nuestra Historia</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center md:space-x-16">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <img src="https://placehold.co/600x400/8B4513/FFFFFF?text=Cocina+Artesanal" alt="Cocina Artesanal" class="rounded-3xl shadow-2xl w-full h-auto">
+                </div>
+                <div class="md:w-1/2 text-lg leading-relaxed text-gray-300">
+                    <p class="mb-6">
+                        En Ña Asu, creemos que la mejor comida es la que se hace con el corazón. Desde nuestros inicios, nos hemos dedicado a elaborar prepizzas de la más alta calidad, utilizando recetas tradicionales y los ingredientes más frescos.
+                    </p>
+                    <p class="mb-6">
+                        Nuestra pasión es llevar el auténtico sabor casero a tu hogar, facilitando que disfrutes de una pizza deliciosa y recién hecha en cualquier momento. Cada prepizza es el resultado de un cuidadoso proceso artesanal, garantizando una base perfecta para tus creaciones culinarias.
+                    </p>
+                    <p>
+                        Somos una empresa familiar con raíces profundas en la tradición culinaria, y estamos orgullosos de cada producto que sale de nuestra cocina. ¡Gracias por elegir Ña Asu!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Productos -->
+    <section id="productos" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-5xl font-extrabold mb-16 text-accent">Nuestros Productos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Product Card 1: PREPIZZA NORMAL -->
+                <div class="card p-8 flex flex-col items-center">
+                    <div class="mb-6 w-full h-auto object-cover shadow-md bg-yellow-500 rounded-xl flex items-center justify-center" style="height: 300px;">
+                        <h3 class="product-title text-black">PREPIZZA NORMAL</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6 text-center text-base">
+                        Nuestra prepizza tradicional, suave y crocante, lista para combinar con tus ingredientes favoritos.
+                    </p>
+                    <span class="product-price text-3xl font-bold text-accent">7.000 Gs C/U</span>
+                </div>
+
+                <!-- Product Card 2: PREPIZZA BORDE RELLENO -->
+                <div class="card p-8 flex flex-col items-center">
+                    <div class="mb-6 w-full h-auto object-cover shadow-md bg-yellow-500 rounded-xl flex items-center justify-center" style="height: 300px;">
+                        <h3 class="product-title text-black">PREPIZZA BORDE RELLENO</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6 text-center text-base">
+                        Una deliciosa opción con borde relleno, perfecta para quienes buscan un extra de sabor.
+                    </p>
+                    <span class="product-price text-3xl font-bold text-accent">12.000 Gs C/U</span>
+                </div>
+
+                <!-- Product Card 3: PIZZETAS -->
+                <div class="card p-8 flex flex-col items-center">
+                    <div class="mb-6 w-full h-auto object-cover shadow-md bg-yellow-500 rounded-xl flex items-center justify-center" style="height: 300px;">
+                        <h3 class="product-title text-black">PIZZETAS</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6 text-center text-base">
+                        Pequeñas y versátiles, ideales para picadas o para los más chicos.
+                    </p>
+                    <span class="product-price pizzetas text-3xl font-bold text-accent">4.000 Gs C/U</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto (incluye el pie de página) -->
+    <section id="contacto" class="py-20 bg-gray-900 flex flex-col items-center justify-center">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-5xl font-extrabold mb-12 text-accent">Haz tu Pedido por WhatsApp</h2>
+            <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                ¡Realiza tu pedido de forma rápida y sencilla a través de WhatsApp! Estamos listos para atenderte.
+            </p>
+            <div class="flex flex-col items-center justify-center text-lg text-gray-200">
+                <p class="mb-8 text-xl"><strong class="text-accent">Producción:</strong> Lunes a Sábado</p>
+                <a href="https://wa.me/595984702223?text=Hola,%20me%20gustar%C3%ADa%20hacer%20un%20pedido%20de%20prepizzas." target="_blank" class="whatsapp-link">
+                    <i class="fab fa-whatsapp text-3xl"></i>
+                    <span>Enviar Mensaje</span>
+                </a>
+            </div>
+            <!-- Pie de página dentro de la sección contacto -->
+            <div class="footer-container">
+                <div class="container mx-auto px-4 flex justify-center items-center">
+                    <p class="footer-text">© 2025 Todos los derechos reservados | Desarrollado por Gustavo Méndez</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
