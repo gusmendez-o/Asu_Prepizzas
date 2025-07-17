@@ -115,14 +115,15 @@
         }
         .footer-text {
             font-size: 0.7rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
             line-height: 1.2;
             text-align: center;
             width: 100%;
             color: white;
             font-weight: 400;
+            /* Ajuste: permite salto de línea en móvil */
+            white-space: normal;
+            overflow: visible;
+            text-overflow: initial;
         }
         @media (min-width: 640px) {
             .footer-text { font-size: 0.8rem; }
@@ -151,7 +152,6 @@
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
         }
-        /* Ajuste para el precio de PIZZETAS: un poquito más abajo */
         .product-price.pizzetas {
             margin-top: 2rem;
         }
@@ -276,5 +276,5 @@
         </div>
     </section>
 
-</body>
-</html>
+    </body>
+    </html>
